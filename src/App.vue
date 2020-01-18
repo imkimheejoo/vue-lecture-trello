@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    main 페이지
+    코드 시작!
+    <router-view></router-view>
   </div>
 </template>
 
