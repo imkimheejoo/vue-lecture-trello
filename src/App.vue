@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    main 페이지
   </div>
 </template>
 
