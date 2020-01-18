@@ -1,18 +1,21 @@
 <template>
   <div id="app">
-    코드 시작!
-    <router-view></router-view>
+  <navbar/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
+    import Navbar from './components/Navbar.vue'
+
+    export default {
+        name: 'app',
+        components: {
+            Navbar
+        },
+        data() {
+            return {}
+        }
     }
-  }
-}
 </script>
 
 <style>
