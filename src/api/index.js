@@ -9,10 +9,6 @@ const onUnauthorized = () => {
   router.push('/login')
 }
 
-export const setAuthInHeader = token => {
-  axios.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : null;
-}
-
 const request = (method, url, data) => {
   //객체형식으로도 전달 가능
   return axios({
@@ -28,6 +24,13 @@ const request = (method, url, data) => {
       throw result.response
     })
 }
+
+export const setAuthInHeader = token => {
+  axios.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : null;
+}
+
+const {token} = localStorage
+if (token) setAuthInHeader(token)
 
 export const board = {
   fetch() {

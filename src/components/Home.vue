@@ -8,14 +8,6 @@
           {{b}}
         </div>
       </div>
-      <ul>
-        <li>
-          <router-link to="/b/1">Board1</router-link>
-        </li>
-        <li>
-          <router-link to="/b/2">Board2</router-link>
-        </li>
-      </ul>
     </div>
   </div>
 </template>
@@ -40,6 +32,8 @@
                 board.fetch()
                     .then(data => {
                         this.boards = data
+                    })
+                    .finally(_ => {
                         this.loading = false
                     })
             }

@@ -13,7 +13,7 @@ const requireAuth = (to, from, next) => {
   const isAuth = localStorage.getItem('token') //없으면 undefined 값이 저장
   //로그인이 완료되면 현재페이지로 돌아오게 하려면 rPath=${encodeURIComponent(to.path)}
   const loginPath = `/login?rPath=${encodeURIComponent(to.path)}`
-  isAuth? next() : next(loginPath)
+  isAuth ? next() : next(loginPath)
 }
 
 const router = new VueRouter({
