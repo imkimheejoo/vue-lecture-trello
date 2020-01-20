@@ -29,5 +29,5 @@ const router = new VueRouter({
     {path: '*', component: NotFound}
   ]
 })
-//모듈로 사용할 수 있게 exprot
+//모듈로 사용할 수 있게 export
 export default router

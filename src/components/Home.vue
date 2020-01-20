@@ -40,6 +40,7 @@
                 board.fetch()
                     .then(data => {
                         this.boards = data
+                        this.loading = false
                     })
             }
         }
