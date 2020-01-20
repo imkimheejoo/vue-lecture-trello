@@ -4,6 +4,7 @@
       Board List
       <div v-if="loading">로딩중</div>
       <div v-else>Api result: {{apiRes}}</div>
+      <div v-if="error">{{error}}</div>
       <ul>
         <li>
           <router-link to="/b/1">Board1</router-link>
@@ -17,12 +18,14 @@
 </template>
 
 <script>
+  import axios from 'axios'
     export default {
         name: "Home",
         data() {
             return {
                 loading: false,
-                apiRes: ''
+                apiRes: '',
+                error: ''
             }
         },
         created() {
@@ -32,21 +35,25 @@
             fetchData() {
                 this.loading = true
 
-                const req = new XMLHttpRequest() //요청객체 생성
-
-                req.open('GET', 'http://localhost:3000/health')
-                req.send()
-
-                req.addEventListener('load', () => {
+                axios.get('http://localhost:3000/health')
+                    .then(res => {
+                        this.apiRes = res.data
+                    })
+                    .catch(res => {
+                        this.error = res.response.data
+                    }).finally(() => {
                     this.loading = false
-                    this.apiRes = {
-                        status: req.status,
-                        statusText: req.statusText,
-                        response: JSON.parse(req.response) //순수 문자열로 오기 때문에 json으로 파싱 해줘야 함
-                    }
                 })
 
-
+                axios.get('http://localhost:3000/_health')
+                    .then(res => {
+                        this.apiRes = res.data
+                    })
+                    .catch(res => {
+                        this.error = res.response.data
+                    }).finally(() => {
+                    this.loading = false
+                })
             }
         }
     }
