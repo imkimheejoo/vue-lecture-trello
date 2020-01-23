@@ -21,6 +21,7 @@
 <script>
     import {board} from '../api'
     import AddBoard from "./AddBoard";
+    import {mapState} from 'vuex'
 
     export default {
         name: "Home",
@@ -32,9 +33,18 @@
                 loading: false,
                 boards: [],
                 error: '',
-                isAddBoard : false
             }
         },
+        //es6 해체문법
+        computed: {
+            ...mapState([
+                'isAddBoard'
+            ]),
+        }
+        // isAddBoard() {
+        //     return this.$store.state.isAddBoard
+        // }
+        ,
         created() {
             this.fetchData()
         },
