@@ -38,6 +38,7 @@
         //es6 해체문법
         computed: {
             ...mapState([
+                //  문자열 값 'isAddBoard'를 전달하는 것은 `state => state.isAddBoard`와 같습니다.? , es6 해체 안하면 다른 컴퓨티드 못씀!
                 'isAddBoard'
             ]),
         }
@@ -65,6 +66,7 @@
                     })
             },
             addBoard() {
+                // todo -> 변이를 이용해서 값을 변경
                 this.isAddBoard = true
             },
             onAddBoard(title) {
